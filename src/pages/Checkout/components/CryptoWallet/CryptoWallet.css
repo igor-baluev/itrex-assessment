@@ -1,0 +1,61 @@
+.crypto-wallet {
+    display: flex;
+    justify-content: center;
+}
+
+.wallet-info {
+    font-size: 1.1em;
+    color: var(--color-success);
+    margin: 1em 0;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: 1em;
+    justify-content: stretch;
+    justify-items: stretch;
+}
+
+.payment-form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing);
+}
+
+.payment-amount {
+    font-size: 2em;
+}
+
+.form-input {
+    flex: 1 1 0%;
+    min-width: 0;
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 1em;
+    border-radius: var(--radius-sm);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-right: var(--spacing-sm);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.crypto-wallet__btn {
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+  padding: 12px 36px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 50px;
+}
+
+.crypto-wallet__btn:hover {
+  cursor: pointer;
+  background-color: black;
+}

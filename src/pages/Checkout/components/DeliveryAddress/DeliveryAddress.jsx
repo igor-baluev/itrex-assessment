@@ -2,10 +2,13 @@ import "./DeliveryAddress.css";
 import { useUserData } from "../../../../contexts/UserDataProvider.js";
 import { v4 as uuid } from "uuid";
 
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../../../../contexts/AuthProvider.js";
 import { useNavigate } from "react-router-dom";
+
+import CryptoWallet from "../CryptoWallet/CryptoWallet";
+import Modal from "../../../../components/Modal/Modal";
 
 export const DeliveryAddress = () => {
   const { userDataState, dispatch, clearCartHandler } = useUserData();
@@ -61,10 +64,11 @@ export const DeliveryAddress = () => {
     handler: (response) => successHandler(response),
   };
 
+  const [showWalletModal, setShowWalletModal] = useState(false);
+
   const placeOrderHandler = () => {
     if (orderAddress) {
-      const razorpayInstance = new window.Razorpay(razorpayOptions);
-      razorpayInstance.open();
+      setShowWalletModal(true);
     } else {
       toast("Please select an address!");
     }
@@ -88,6 +92,13 @@ export const DeliveryAddress = () => {
           Place Order
         </button>
       </div>
+      <Modal isOpen={showWalletModal} onClose={() => setShowWalletModal(false)}>
+        <h2>Crypto Wallet Checkout</h2>
+        <CryptoWallet
+          amount={totalAmount}
+          onClose={() => setShowWalletModal(false)}
+        />
+      </Modal>
     </div>
   );
 };
